@@ -26,15 +26,25 @@ body {
 }
 h1 {
   font-family: 'Cinzel', serif;
-  font-size: 72px;
+  font-size: 60px;
+
+}
+.todo {
+  margin-left: 25px;
+  &.strike {
+    text-decoration: line-through;
+  }
+
+}
+#list-box {
+  .list-group {
+    margin-bottom: 15px;
+  }
 
 }
 #filter-box {
-  margin-bottom: 10px;
+  margin-bottom: 15px;
   > .row > div {
     margin-top: 10px;
-    > div > div {
-      margin-bottom: 10px;
-    }
   }
 }

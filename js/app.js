@@ -19,11 +19,28 @@ Todo.factory('todoStorage', function() {
 Todo.controller('todoCtrl', function todoCtrl($scope, todoStorage) {
   $scope.todos = todoStorage.get();
   $scope.show = 'All';
-  $scope.allTodoCount = 0;
-  $scope.activeTodoCount = 0;
-  $scope.completedTodoCount = 0;
+  $scope.allTodoCount = $scope.todos.length;
+  $scope.activeTodoCount = $scope.todos.filter(function(val) {
+    return !val.completed;
+  }).length;
+  $scope.completedTodoCount = $scope.todos.filter(function(val) {
+    return val.completed;
+  }).length;
   $scope.newTodo = '';
   $scope.searchFilter = '';
+
+  $scope.$watch("todos", function(newVal, oldVal) {
+    if (newVal !== null && angular.isDefined(newVal) && newVal !== oldVal) {
+      $scope.allTodoCount = $scope.todos.length;
+      $scope.activeTodoCount = $scope.todos.filter(function(val) {
+        return !val.completed;
+      }).length;
+      $scope.completedTodoCount = $scope.todos.filter(function(val) {
+        return val.completed;
+      }).length;
+      todoStorage.put(newVal);
+    }
+  }, true);
 
   $scope.addTodo = function() {
     $scope.newTodo.trim();
@@ -65,18 +82,4 @@ Todo.controller('todoCtrl', function todoCtrl($scope, todoStorage) {
       return false;
     }
   };
-
-  $scope.$watch("todos", function(newVal, oldVal) {
-    if (newVal !== null && angular.isDefined(newVal) && newVal !== oldVal) {
-      $scope.allTodoCount = $scope.todos.length;
-      $scope.activeTodoCount = $scope.todos.filter(function(val) {
-        return !val.completed;
-      }).length;
-      $scope.completedTodoCount = $scope.todos.filter(function(val) {
-        return val.completed;
-      }).length;
-      todoStorage.put(newVal);
-    }
-  }, true);
-
 });
