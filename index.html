@@ -67,7 +67,7 @@
               <input class="pull-left" type="checkbox" ng-model="todo.completed">
               <div class="todo" ng-class="{strike: todo.completed}" ng-click="todo.completed = !todo.completed">{{todo.title}}</div>
             </li>
-            <li class="list-group-item text-center" ng-if="!(todos| filter:searchFilter | filter:statusFilter).length"><em>No todos here, maybe you would like to add some! </em><span class="fa fa-share fa-rotate-90" aria-hidden="true"></span>
+            <li class="list-group-item text-center" ng-if="!(todos| filter:searchFilter | filter:statusFilter).length"><em>No todos here, would you like to add some? </em><span class="fa fa-share fa-rotate-90" aria-hidden="true"></span>
             </li>
             <div class="row" ng-if="(todos| filter:searchFilter | filter:statusFilter).length">
               <div class="col-xs-6 col-sm-4 col-md-2">
