@@ -64,12 +64,20 @@
       <div class="row">
         <div class="col-md-12">
           <ul class="list-group">
-            <li class="list-group-item text-center" ng-show="!todos.length"><em>No todos, start by adding some! </em><span class="glyphicon glyphicon-share-alt" aria-hidden="true"></span></li>
             <li class="list-group-item" ng-repeat="todo in todos track by $index">
               <input type="checkbox" ng-model="todo.completed"> {{todo.title}}
               <button type="button" class="close" aria-label="Remove" ng-click="deleteTodo()"><span aria-hidden="true">&times;</span>
               </button>
             </li>
+            <li class="list-group-item text-center" ng-show="!todos.length"><em>No todos, start by adding some! </em><span class="glyphicon glyphicon-share-alt" aria-hidden="true"></span></li>
+            <div class="row" ng-show="todos.length">
+              <div class="col-xs-3">
+                <button type="button" class="btn btn-default btn-sm btn-block" ng-click="clearCompleted()">Mark all</button>
+              </div>
+              <div class="col-xs-offset-6 col-xs-3">
+                <button type="button" class="btn btn-default btn-sm btn-block" ng-click="clearCompleted()">Clear completed</button>
+              </div>
+            </div>
           </ul>
         </div>
       </div>
