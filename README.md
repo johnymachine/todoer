@@ -1,4 +1,3 @@
-angular-todo
+Todoer
 ============
-
-Simple todo app made with angular on local storage
+It is simple todo aplication made with bootstrap, fontawesome, less angularjs.
